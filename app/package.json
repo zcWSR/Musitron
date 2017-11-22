@@ -1,0 +1,13 @@
+{
+  "name": "musitron",
+  "version": "0.1.0",
+  "description": "1.0.0",
+  "main": "main.js",
+  "keywords": [
+    "Electron",
+    "React",
+    "Webpack",
+    "Music"
+  ],
+  "author": "zcWSR"
+}
