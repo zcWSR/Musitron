@@ -23,7 +23,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js|\.jsx$/,
+        test: /\.(js|jsx)$/,
         include: [PLAYER_PATH, LYRIC_PATH],
         loader: 'babel-loader',
         query: { presets: ['env', 'react', 'stage-0'] },
