@@ -12,7 +12,12 @@ let mainWindow;
 
 function createWindow() {
   // Create the browser window.
-  mainWindow = new BrowserWindow({ width: 800, height: 600, show: false });
+  mainWindow = new BrowserWindow({
+    width: 800,
+    height: 600,
+    show: false,
+    frame: false,
+  });
 
   mainWindow.once('ready-to-show', () => {
     mainWindow.show();

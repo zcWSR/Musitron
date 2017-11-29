@@ -1,5 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Entry from './components/entry';
+import Main from './views/main';
 
-ReactDOM.render(<Entry className="hello" text="hello,electron" />, document.getElementById('entry'));
+const start = (Entry) => {
+  ReactDOM.render(
+    <Entry />,
+    document.getElementById('entry'),
+  );
+};
+
+start(Main);

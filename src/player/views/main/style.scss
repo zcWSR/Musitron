@@ -1,0 +1,21 @@
+* {
+box-sizing: border-box;
+}
+
+body,
+#entry {
+  margin: 0;
+  padding: 0;
+}
+
+#entry {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.mt-header,
+.mt-content,
+.mt-footer {
+  flex: 1;
+}

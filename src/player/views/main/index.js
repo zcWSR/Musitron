@@ -1,7 +1,11 @@
+import 'font-awesome-webpack';
+
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../../components/Header';
+import './style.scss';
 
-export default class Entry extends React.Component {
+export default class Main extends React.Component {
   static defaultProps = {
     text: '',
     className: 'hello',
@@ -18,7 +22,7 @@ export default class Entry extends React.Component {
   render() {
     const { className, text } = this.props;
     return (
-      <h3 className={className}>{text}</h3>
+      <Header />
     );
   }
 }

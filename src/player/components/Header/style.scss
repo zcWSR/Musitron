@@ -1,0 +1,58 @@
+.mt-header {
+  display: flex;
+  .header-btn-container {
+    display: inline-block;
+    flex: 1;
+    margin: 5px 5px 0px 5px;
+    .header-btn {
+      position: relative;
+      display: inline-block;
+      margin: 4px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      align-content: center;
+      i {
+        position: absolute;
+        font-size: 9px;
+        line-height: 7px;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-55%);
+      }
+
+      &.close {
+        background: #fc625d;
+        i {
+          color: #ca2f2c
+        }
+        &:active {
+          background: #EF4E49;
+        }
+      }
+
+      &.minimize {
+        background: #fdbc40;
+        i {
+          color: #A2721D;
+        }
+
+        &:active {
+          background: #fd9526;
+        }
+      }
+
+      &.maximize {
+        background: #34C84A;
+        i {
+          color: #148022;
+        }
+
+        &:active {
+          background: #20a832;
+        }
+      }
+
+    }
+  }
+}
