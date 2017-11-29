@@ -20,7 +20,7 @@ export default class Main extends React.Component {
 
   }
   render() {
-    const { className, text } = this.props;
+    // const { className, text } = this.props;
     return (
       <Header />
     );
