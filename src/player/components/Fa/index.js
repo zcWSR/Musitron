@@ -15,11 +15,11 @@ export default function Fa({ iconName, className, ...rest }) {
 
 Fa.defaultProps = {
   iconName: '',
-  className: [],
+  className: '',
 };
 
 Fa.propTypes = {
   iconName: PropTypes.string,
-  className: PropTypes.arrayOf(PropTypes.string),
+  className: PropTypes.string,
 };
 

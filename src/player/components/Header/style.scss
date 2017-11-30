@@ -1,58 +1,76 @@
 .mt-header {
   display: flex;
+  -webkit-app-region: drag;
   .header-btn-container {
+    position: relative;
     display: inline-block;
     flex: 1;
     margin: 5px 5px 0px 5px;
     .header-btn {
-      position: relative;
-      display: inline-block;
-      margin: 4px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      align-content: center;
-      i {
-        position: absolute;
-        font-size: 9px;
-        line-height: 7px;
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-55%);
-      }
-
+      -webkit-app-region: no-drag;
+      color: transparent;
+      margin: 0 4px;
+      font-size: 15px;
       &.close {
-        background: #fc625d;
-        i {
-          color: #ca2f2c
-        }
+        color: #fc625d;
         &:active {
-          background: #EF4E49;
+          color: #EF4E49;
         }
       }
 
       &.minimize {
-        background: #fdbc40;
-        i {
-          color: #A2721D;
-        }
-
+        color: #fdbc40;
         &:active {
-          background: #fd9526;
+          color: #fd9526;
         }
       }
 
       &.maximize {
-        background: #34C84A;
-        i {
-          color: #148022;
-        }
-
+        color: #34C84A;
         &:active {
-          background: #20a832;
+          color: #20a832;
         }
       }
 
+
+      &.close-bg {
+        color: #fc625d;
+      }
+
+      &.minimize-bg {
+        color: #fdbc40;
+      }
+
+      &.maximize-bg {
+        color: #34C84A;
+      }
+    }
+
+    .fix {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    &:hover {
+      .header-btn {
+        &.close-bg {
+          color: #ca2f2c;
+        }
+
+        &.minimize-bg {
+          color: #A2721D;
+        }
+
+        &.maximize-bg {
+          color: #148022;
+        }
+
+      }
+
+      .fix {
+        display: block;
+      }
     }
   }
 }

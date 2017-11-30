@@ -7,20 +7,8 @@ export default class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      hover: false,
+      maximize: false,
     };
-  }
-
-  hover() {
-    this.setState({
-      hover: true,
-    });
-  }
-
-  unhover() {
-    this.setState({
-      hover: false,
-    });
   }
 
   closeWindow() {
@@ -32,32 +20,34 @@ export default class Header extends React.Component {
   }
 
   maxWindow() {
-    ipcRenderer.send('player/maxWindow');
+    if (this.state.maximize) {
+      ipcRenderer.send('player/unmaxWindow');
+      this.setState({
+        maximize: false,
+      });
+    } else {
+      ipcRenderer.send('player/maxWindow');
+      this.setState({
+        maximize: true,
+      });
+    }
   }
 
   render() {
-    const { hover } = this.state;
     return (
       <div className="mt-header">
         <div
           className="header-btn-container"
-          onMouseEnter={() => this.hover()}
-          onMouseLeave={() => this.unhover()}
         >
-          <div className="header-btn close">
-            {
-              hover && <Fa iconName="times" onClick={() => this.closeWindow()} onDrag={() => false} />
-            }
+          <div>
+            <Fa iconName="circle" className="header-btn close-bg" />
+            <Fa iconName="circle" className="header-btn minimize-bg" />
+            <Fa iconName="circle" className="header-btn maximize-bg" />
           </div>
-          <div className="header-btn minimize">
-            {
-              hover && <Fa iconName="minus" onClick={() => this.minWindow()} onDrag={() => false} />
-            }
-          </div>
-          <div className="header-btn maximize">
-            {
-              hover && <Fa iconName="plus" onClick={() => this.maxWindow()} onDrag={() => false} />
-            }
+          <div className="fix">
+            <Fa iconName="times-circle" className="header-btn close" onClick={() => this.closeWindow()} />
+            <Fa iconName="minus-circle" className="header-btn minimize" onClick={() => this.minWindow()} />
+            <Fa iconName="plus-circle" className="header-btn maximize" onClick={() => this.maxWindow()} />
           </div>
         </div>
       </div>
