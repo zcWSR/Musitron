@@ -36,9 +36,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <div className="mt-header">
-        <div
-          className="header-btn-container"
-        >
+        <div className="header-btn-container">
           <div>
             <Fa iconName="circle" className="header-btn close-bg" />
             <Fa iconName="circle" className="header-btn minimize-bg" />
@@ -50,6 +48,7 @@ export default class Header extends React.Component {
             <Fa iconName="plus-circle" className="header-btn maximize" onClick={() => this.maxWindow()} />
           </div>
         </div>
+        
       </div>
     );
   }

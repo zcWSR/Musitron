@@ -26,7 +26,11 @@ module.exports = {
         test: /\.(js|jsx)$/,
         include: [PLAYER_PATH, LYRIC_PATH],
         loader: 'babel-loader',
-        query: { presets: ['env', 'react', 'stage-0'] },
+        query: {
+          cacheDirectory: true,
+          presets: ['env', 'stage-0', 'react'],
+          plugins: ['transform-decorators-legacy', 'transform-class-properties'],
+        },
       },
       {
         test: /\.css/,

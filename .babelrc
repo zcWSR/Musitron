@@ -1,11 +1,12 @@
 {
   "presets": [
-    "react",
     ["env", {
       "target": {
         "node": "7.9"
       }
     }],
-    "stage-0"
-  ]
+    "stage-0",
+    "react"
+  ],
+  "plugins": ["transform-decorators-legacy", "transform-class-properties"]
 }

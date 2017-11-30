@@ -6,12 +6,13 @@ const { app, BrowserWindow, ipcMain } = electron;
 
 let playerWindow;
 
-function createWindow() {
+function createPlayerWindow() {
   playerWindow = new BrowserWindow({
     width: 800,
     height: 600,
     show: false,
     frame: false,
+    transparent: true,
   });
 
   playerWindow.once('ready-to-show', () => {
@@ -52,7 +53,7 @@ function createWindow() {
   });
 }
 
-app.on('ready', createWindow);
+app.on('ready', createPlayerWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
