@@ -3,6 +3,7 @@
   display: flex;
   height: 30px;
   -webkit-app-region: drag;
+  user-select: none;
   .header-btn-container {
     position: relative;
     display: inline-block;

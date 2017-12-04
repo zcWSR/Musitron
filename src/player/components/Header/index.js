@@ -1,6 +1,6 @@
 import React from 'react';
 import { ipcRenderer } from 'electron';
-import Fa from '../Fa';
+import Icon from '../Icon';
 import './style.scss';
 
 export default class Header extends React.Component {
@@ -38,17 +38,16 @@ export default class Header extends React.Component {
       <div className="mt-header">
         <div className="header-btn-container">
           <div>
-            <Fa iconName="circle" className="header-btn close-bg" />
-            <Fa iconName="circle" className="header-btn minimize-bg" />
-            <Fa iconName="circle" className="header-btn maximize-bg" />
+            <Icon iconName="fiber manual record" className="header-btn close-bg" onClick={() => this.maxWindow()} />
+            <Icon iconName="fiber manual record" className="header-btn minimize-bg" onClick={() => this.maxWindow()} />
+            <Icon iconName="fiber manual record" className="header-btn maximize-bg" onClick={() => this.maxWindow()} />
           </div>
           <div className="fix">
-            <Fa iconName="times-circle" className="header-btn close" onClick={() => this.closeWindow()} />
-            <Fa iconName="minus-circle" className="header-btn minimize" onClick={() => this.minWindow()} />
-            <Fa iconName="plus-circle" className="header-btn maximize" onClick={() => this.maxWindow()} />
+            <Icon iconName="cancel" className="header-btn close" onClick={() => this.closeWindow()} />
+            <Icon iconName="remove circle" className="header-btn minimize" onClick={() => this.minWindow()} />
+            <Icon iconName="add circle" className="header-btn maximize" onClick={() => this.maxWindow()} />
           </div>
         </div>
-        
       </div>
     );
   }

@@ -2,23 +2,23 @@ import cn from 'classnames';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Fa({ iconName, className, ...rest }) {
+export default function Icon({ iconName, className, ...rest }) {
   const cname = cn(
-    'fa',
-    `fa-${iconName}`,
+    'material-icons',
     className,
   );
+  const name = iconName.split(' ').join('_');
   return (
-    <i className={cname} {...rest} />
+    <i className={cname} {...rest} >{name}</i>
   );
 }
 
-Fa.defaultProps = {
+Icon.defaultProps = {
   iconName: '',
   className: '',
 };
 
-Fa.propTypes = {
+Icon.propTypes = {
   iconName: PropTypes.string,
   className: PropTypes.string,
 };

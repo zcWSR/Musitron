@@ -1,0 +1,12 @@
+{
+  "configurations": [
+    {
+      "name": "Debug Electron Main Process",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}/app",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "program": "${workspaceRoot}/app/main.js"
+    }
+  ]
+}

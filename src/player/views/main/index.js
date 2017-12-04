@@ -1,7 +1,7 @@
-import 'font-awesome-webpack';
+import 'material-design-icons/iconfont/material-icons.css';
 
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Header from '../../components/Header';
 import Controller from '../../components/Controller';
 
@@ -13,11 +13,6 @@ export default class Main extends React.Component {
     className: 'hello',
   }
 
-  static propTypes = {
-    className: PropTypes.string,
-    text: PropTypes.string,
-  }
-
   componentWillMount() {
 
   }
@@ -26,7 +21,7 @@ export default class Main extends React.Component {
     return (
       <div className="mt-player">
         <Header />
-        <div className="mt-content"></div>
+        <div className="mt-content" />
         <Controller />
       </div>
     );
