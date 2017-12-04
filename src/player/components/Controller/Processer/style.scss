@@ -1,0 +1,31 @@
+.mt-processer {
+  width: 120px;
+  height: 4px;
+  background: #b0b0b0;
+  .processer-bar {
+    position: relative;
+    height: 4px;
+    width: 120px;
+  }
+  .processer-btn {
+    display: inline-block;
+    position: relative;
+    height: 15px;
+    width: 15px;
+    border: 1px solid #dfdfdf;
+    border-radius: 50%;
+    .btn-icon {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      height: 4px;
+      width: 4px;
+      border-radius: 50%;
+      background: #d71a22;
+    }
+  }
+
+}
