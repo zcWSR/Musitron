@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './views/main';
+import MainStore from './store';
 
-const start = (Entry) => {
+const start = (Entry, store) => {
   ReactDOM.render(
-    <Entry />,
+    <Entry store={store} />,
     document.getElementById('entry'),
   );
 };
 
-start(Main);
+start(Main, new MainStore());

@@ -38,9 +38,9 @@ export default class Header extends React.Component {
       <div className="mt-header">
         <div className="header-btn-container">
           <div>
-            <Icon iconName="fiber manual record" className="header-btn close-bg" onClick={() => this.maxWindow()} />
-            <Icon iconName="fiber manual record" className="header-btn minimize-bg" onClick={() => this.maxWindow()} />
-            <Icon iconName="fiber manual record" className="header-btn maximize-bg" onClick={() => this.maxWindow()} />
+            <Icon iconName="lens" className="header-btn close-bg" onClick={() => this.maxWindow()} />
+            <Icon iconName="lens" className="header-btn minimize-bg" onClick={() => this.maxWindow()} />
+            <Icon iconName="lens" className="header-btn maximize-bg" onClick={() => this.maxWindow()} />
           </div>
           <div className="fix">
             <Icon iconName="cancel" className="header-btn close" onClick={() => this.closeWindow()} />

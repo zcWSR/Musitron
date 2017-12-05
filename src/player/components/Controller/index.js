@@ -1,14 +1,22 @@
 import React from 'react';
+import { observer, PropTypes } from 'mobx-react';
 import Icon from '../Icon';
-import Processer from './Processer';
-import { Observer } from 'mobx-react';
+import Processor from './Processor';
 
 import './style.scss';
 
 
-export default class Controller extends React.Component {
+@observer export default class Controller extends React.Component {
+  static defaultProps = {
+    store: {},
+  };
+
+  static propTypes = {
+    store: PropTypes.object,
+  }
+
   constructor(props) {
-    super();
+    super(props);
 
     this.state = {
       playing: false,
@@ -28,6 +36,7 @@ export default class Controller extends React.Component {
   }
 
   render() {
+    const { store } = this.props;
     const { playing } = this.state;
 
     return (
@@ -37,7 +46,7 @@ export default class Controller extends React.Component {
           <Icon iconName="pause circle filled" className="controller-pause-btn" onClick={() => this.pause()} /> :
           <Icon iconName="play circle filled" className="controller-play-btn" onClick={() => this.play()} />
         }
-        <Processer PlayProcess={0.3} laodingProcess={0.6} totalTime={130} loading />
+        <Processor store={store.processor} />
       </div>
     );
   }

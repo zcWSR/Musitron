@@ -1,7 +1,9 @@
 .mt-controller {
+  display: flex;
   height: 65px;
-  background: rgba(246, 246, 246, 0.95);
+  background: #f6f6f6;
   .controller-play-btn, .controller-pause-btn {
+    display: inline-block;
     cursor: default;
     font-size: 44px;
     color: #d43c3e;
