@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Main from './views/main';
-import MainStore from './store';
+import PlayerStore from './store';
 
 const start = (Entry, store) => {
   ReactDOM.render(
@@ -10,4 +10,4 @@ const start = (Entry, store) => {
   );
 };
 
-start(Main, new MainStore());
+start(Main, new PlayerStore());

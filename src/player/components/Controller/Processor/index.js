@@ -15,29 +15,54 @@ export default class Processor extends React.Component {
     store: PropTypes.object,
   }
 
+  constructor(props) {
+    super(props);
+    this.store = props.store;
+    window.addEventListener('resize', () => {
+      this.store.barWidth = this.bar.offsetWidth;
+    });
+  }
+  componentDidMount() {
+    this.store.barWidth = this.bar.offsetWidth;
+    const playingInterval = setInterval(() => {
+      this.store.playingProcess += 0.01;
+      if (this.store.playingProcess >= 1) {
+        clearInterval(playingInterval);
+      }
+    }, 100);
+
+    const loadingInterval = setInterval(() => {
+      this.store.loadingProcess += 0.02;
+      if (this.store.loadingProcess >= 1) {
+        clearInterval(loadingInterval);
+      }
+    }, 100);
+  }
+  componentDidUpdate() {
+    this.store.barWidth = this.bar.offsetWidth;
+  }
+
+  getBarRef(ref) {
+    this.bar = ref;
+  }
+
   handleBtnMouseDown(e) {
-    const { store } = this.props;
-    store.startX = e.clientX;
-    store.beforeProcessChange = store.playProcess;
+    this.store.btnStartX = e.screenX;
+    this.store.isBtnPress = true;
+    this.store.btnXWas = this.store.playingProcess * (this.store.barWidth - 14);
   }
 
   render() {
-    const {
-      playProcess,
-      loading,
-      loadingProcess,
-    } = this.props.store;
-
     const btnIconCname = cn(
       'btn-icon loading',
-      loading,
+      this.store.loading,
     );
     return (
       <div className="mt-processor">
-        <div className="processor-bar-container">
+        <div className="processor-bar-container" ref={r => this.getBarRef(r)}>
           <div
             className="processor-btn"
-            style={{ left: `${playProcess}px` }}
+            style={{ left: this.store.btnToLeftPx }}
             onMouseDown={e => this.handleBtnMouseDown(e)}
             role="button"
             tabIndex={0}
@@ -46,9 +71,10 @@ export default class Processor extends React.Component {
           </div>
           <div className="processor-bar">
             <div className="bar" />
-            <div className="bar-loading" style={{ width: `${loadingProcess * 100}%` }} />
+            <div className="bar-loading" style={{ width: `${this.store.loadingProcess * 100}%` }} />
           </div>
         </div>
+        <div className="processor-time">{this.store.timeString}</div>
       </div>
     );
   }

@@ -1,6 +1,9 @@
+@import '../../font-face.scss';
 * {
 box-sizing: border-box;
 user-select: none;
+outline: none;
+@include recommend-font-family;
 }
 
 body,

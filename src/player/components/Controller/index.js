@@ -1,5 +1,6 @@
 import React from 'react';
-import { observer, PropTypes } from 'mobx-react';
+import { observer } from 'mobx-react';
+import { PropTypes } from 'prop-types';
 import Icon from '../Icon';
 import Processor from './Processor';
 
@@ -17,36 +18,26 @@ import './style.scss';
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      playing: false,
-    };
+    this.store = props.store;
   }
 
   play() {
-    this.setState({
-      playing: true,
-    });
+    this.store.playing = true;
   }
 
   pause() {
-    this.setState({
-      playing: false,
-    });
+    this.store.playing = false;
   }
 
   render() {
-    const { store } = this.props;
-    const { playing } = this.state;
-
     return (
       <div className="mt-controller">
         {
-        playing ?
+        this.store.playing ?
           <Icon iconName="pause circle filled" className="controller-pause-btn" onClick={() => this.pause()} /> :
           <Icon iconName="play circle filled" className="controller-play-btn" onClick={() => this.play()} />
         }
-        <Processor store={store.processor} />
+        <Processor store={this.store} />
       </div>
     );
   }

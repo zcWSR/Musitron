@@ -28,6 +28,7 @@
       border-radius: 50%;
       background: white;
       box-shadow: 0 0 2px #444;
+      transition: left .1s linear;
       z-index: 2;
       
       .btn-icon {
@@ -73,9 +74,10 @@
 
 
   .processor-time {
+    margin-left: 10px;
     color: #888;
     line-height: 14px;
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .loading {
