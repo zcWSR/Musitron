@@ -12,11 +12,11 @@ import './style.scss';
 
 @observer export default class Main extends React.Component {
   static defaultProps = {
-    store: {},
+    store: {}
   }
 
   static propTypes = {
-    store: PropTypes.object,
+    store: PropTypes.object
   }
 
   constructor(props) {

@@ -7,7 +7,7 @@ export default class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      maximize: false,
+      maximize: false
     };
   }
 
@@ -23,12 +23,12 @@ export default class Header extends React.Component {
     if (this.state.maximize) {
       ipcRenderer.send('player/unmaxWindow');
       this.setState({
-        maximize: false,
+        maximize: false
       });
     } else {
       ipcRenderer.send('player/maxWindow');
       this.setState({
-        maximize: true,
+        maximize: true
       });
     }
   }

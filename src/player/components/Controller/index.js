@@ -9,11 +9,11 @@ import './style.scss';
 
 @observer export default class Controller extends React.Component {
   static defaultProps = {
-    store: {},
+    store: {}
   };
 
   static propTypes = {
-    store: PropTypes.object,
+    store: PropTypes.object
   }
 
   constructor(props) {
@@ -33,9 +33,9 @@ import './style.scss';
     return (
       <div className="mt-controller">
         {
-        this.store.playing ?
-          <Icon iconName="pause circle filled" className="controller-pause-btn" onClick={() => this.pause()} /> :
-          <Icon iconName="play circle filled" className="controller-play-btn" onClick={() => this.play()} />
+          this.store.playing ?
+            <Icon iconName="pause circle filled" className="controller-pause-btn" onClick={() => this.pause()} /> :
+            <Icon iconName="play circle filled" className="controller-play-btn" onClick={() => this.play()} />
         }
         <Processor store={this.store} />
       </div>

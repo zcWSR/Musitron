@@ -15,11 +15,11 @@ export default function Icon({ iconName, className, ...rest }) {
 
 Icon.defaultProps = {
   iconName: '',
-  className: '',
+  className: ''
 };
 
 Icon.propTypes = {
   iconName: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
