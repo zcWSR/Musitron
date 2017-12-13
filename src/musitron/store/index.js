@@ -1,7 +1,9 @@
 import ControllerStore from './controller';
 
-export default class PlayerStore {
+class PlayerStore {
   constructor() {
     this.controller = new ControllerStore();
   }
 }
+
+export default new PlayerStore();

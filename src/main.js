@@ -4,56 +4,64 @@ const url = require('url');
 
 const { app, BrowserWindow, ipcMain } = electron;
 
+let mainWindow;
 let playerWindow;
 
-function createPlayerWindow() {
-  playerWindow = new BrowserWindow({
+function createMainWindow() {
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     show: false,
     frame: false,
-    transparent: true,
+    transparent: true
   });
 
-  playerWindow.once('ready-to-show', () => {
-    playerWindow.show();
+  mainWindow.once('ready-to-show', () => {
+    mainWindow.show();
   });
   // and load the index.html of the app.
-  playerWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'player.html'),
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'musitron.html'),
     protocol: 'file:',
-    slashes: true,
+    slashes: true
   }));
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
   // Emitted when the window is closed.
-  playerWindow.on('closed', () => {
+  mainWindow.on('closed', () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    playerWindow = null;
+    mainWindow = null;
   });
 
   ipcMain.on('player/closeWindow', () => {
-    playerWindow.hide();
+    mainWindow.hide();
   });
 
   ipcMain.on('player/minWindow', () => {
-    playerWindow.minimize();
+    mainWindow.minimize();
   });
 
   ipcMain.on('player/maxWindow', () => {
-    playerWindow.maximize();
+    mainWindow.maximize();
   });
 
   ipcMain.on('player/unmaxWindow', () => {
-    playerWindow.unmaximize();
+    mainWindow.unmaximize();
   });
 }
 
-app.on('ready', createPlayerWindow);
+// function createPlayWindow() {
+//   playerWindow = new BrowserWindow({
+//     show: false
+//   });
+// }
+
+
+app.on('ready', createMainWindow);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -64,10 +72,10 @@ app.on('window-all-closed', () => {
 app.on('activate', () => {
   // On OS X it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
-  if (playerWindow === null) {
-    createWindow();
+  if (mainWindow === null) {
+    createMainWindow();
   } else {
-    playerWindow.show();
+    mainWindow.show();
   }
 });
 

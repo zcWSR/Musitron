@@ -27,7 +27,8 @@ export default class Processor extends React.Component {
       const controller = this.store;
       if (controller.isProcessorBtnPress) {
         const playingProcess =
-          ((e.screenX - controller.processorBtnStartX) + controller.processorBtnXWas) / (controller.processorBarWidth - 14);
+          ((e.screenX - controller.processorBtnStartX) + controller.processorBtnXWas) /
+          (controller.processorBarWidth - 14);
         if (playingProcess <= 0) {
           controller.playingProcess = 0;
         } else if (playingProcess >= 1) {
