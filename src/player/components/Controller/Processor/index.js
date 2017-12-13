@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import cn from 'classnames';
+import Utils from '../../../utils';
 
 import './style.scss';
 
@@ -61,10 +62,17 @@ export default class Processor extends React.Component {
     controller.processorBtnXWas = controller.processorBtnToLeftPx;
   }
 
+  handleBarMouseDown(e) {
+    const offsetX = Utils.getOffsetX(e.target);
+    let process = e.clientX - offsetX - 2;
+    if (process < 0) { process = 0; }
+    this.store.playingProcess = process / (this.store.processorBarWidth - 14).toFixed(1);
+  }
+
   render() {
     const btnIconCname = cn(
-      'btn-icon loading',
-      this.store.loading,
+      'btn-icon',
+      this.store.loading
     );
     return (
       <div className="mt-processor">
@@ -78,9 +86,15 @@ export default class Processor extends React.Component {
           >
             <div className={btnIconCname} />
           </div>
-          <div className="processor-bar">
+          <div
+            className="processor-bar"
+            onMouseDown={e => this.handleBarMouseDown(e)}
+            role="button"
+            tabIndex={0}
+          >
             <div className="bar" />
-            <div className="bar-loading" style={{ width: `${this.store.loadingProcess * 100}%` }} />
+            <div className="bar process" style={{ width: `${this.store.playingProcess * 100}%`}} />
+            <div className="bar loading" style={{ width: `${this.store.loadingProcess * 100}%` }} />
           </div>
         </div>
         <div className="processor-time">{this.store.timeString}</div>

@@ -20,6 +20,7 @@ $volume-icon-size: 18px;
     align-self: center;
     display: inline-block;
     position: relative;
+    padding: 0 $volume-btn-height / 2 - $volume-bar-height / 2;
     height: inherit;
     
     .volume-btn {
@@ -40,7 +41,7 @@ $volume-icon-size: 18px;
 
     .volume-bar {
       position: relative;
-      margin: 0 $volume-btn-height / 2 - $volume-bar-height / 2;
+      
       height: inherit;
       .bar {
         position: absolute;
@@ -48,8 +49,13 @@ $volume-icon-size: 18px;
         width: 100%;
         transform: translateY(-50%);
         height: $volume-bar-height;
-        background: #9a9b9c;
+        background: #d7d7d7;;
         border-radius: 5px;
+        transition: width .1s linear;
+
+        &.process {
+          background: #d71a22;
+        }
       }
     }
 

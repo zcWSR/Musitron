@@ -18,6 +18,7 @@ $process-bar-height: 4px;
   .processor-bar-container {
     flex: 1;    
     position: relative;
+    padding: 0 $process-btn-height / 2 - $process-bar-height / 2;
     height: inherit;
     .processor-btn {
       position: absolute;
@@ -48,30 +49,24 @@ $process-bar-height: 4px;
 
     .processor-bar {
       position: relative;
-      margin: 0 $process-btn-height / 2 - $process-bar-height / 2;
       height: inherit;
       .bar {
         position: absolute;
         top: 50%;
         width: 100%;
-        transform: translateY(-50%);
         height: $process-bar-height;
+        transform: translateY(-50%);
         background: #d7d7d7;
         border-radius: 5px;
-      }
-  
-      .bar-loading {
-        position: absolute;
-        top: 50%;
-        width: 0%;
-        height: $process-bar-height;
-        transform: translateY(-50%);
-        background: #9a9b9c;
-        border-radius: 5px;
         transition: width .1s linear;
-      }
-  
 
+        &.process {
+          background: #d71a22;
+        }
+        &.loading {
+          background: #9a9b9c;
+        }
+      }
     }
   }
 
