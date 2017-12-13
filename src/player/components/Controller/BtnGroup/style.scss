@@ -1,0 +1,48 @@
+$small-controll-btn-size: 40px;
+$big-controll-btn-size: 44px;
+
+.controller-btn-group {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  .btn-group-btn {
+    display: inline-block;
+    cursor: default;
+    text-align: center;
+    width: $big-controll-btn-size * 1.3;
+    color: #d43c3e;
+    transition: font-size .1s linear;
+    
+    &:active {
+      color: #9a151a;
+    }
+
+    &.previous, &.next {
+      font-size: $small-controll-btn-size;
+
+      &:active {
+        font-size: $small-controll-btn-size * 1.02;
+      }
+    }
+
+
+    &.play, &.pause {
+      font-size: $big-controll-btn-size;
+
+      &:active {
+        font-size: $big-controll-btn-size * 1.02;
+      }
+    }
+  }
+
+  .btn-group-before-btn, .btn-group-after-btn {
+    display: inline-block;
+    cursor: default;
+    font-size: 35px;
+    color: #d43c3e;
+    
+    &:active {
+      color: #9a151a;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 import { PropTypes } from 'prop-types';
-import Icon from '../Icon';
+import BtnGroup from './BtnGroup';
 import Processor from './Processor';
+import Volume from './Volume';
 
 import './style.scss';
 
@@ -21,23 +22,12 @@ import './style.scss';
     this.store = props.store;
   }
 
-  play() {
-    this.store.playing = true;
-  }
-
-  pause() {
-    this.store.playing = false;
-  }
-
   render() {
     return (
       <div className="mt-controller">
-        {
-          this.store.playing ?
-            <Icon iconName="pause circle filled" className="controller-pause-btn" onClick={() => this.pause()} /> :
-            <Icon iconName="play circle filled" className="controller-play-btn" onClick={() => this.play()} />
-        }
+        <BtnGroup store={this.store} />
         <Processor store={this.store} />
+        <Volume store={this.store} />
       </div>
     );
   }

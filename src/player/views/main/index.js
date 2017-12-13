@@ -24,33 +24,10 @@ import './style.scss';
     this.store = props.store;
   }
 
-  handleMouseUp() {
-    const { controller } = this.store;
-    controller.isBtnPress = false;
-    controller.btnXWas = controller.btnToLeftPx;
-  }
-
-  handleMouseMove(e) {
-    const { controller } = this.store;
-    if (controller.isBtnPress) {
-      const playingProcess =
-        ((e.screenX - controller.btnStartX) + controller.btnXWas) / (controller.barWidth - 14);
-      if (playingProcess <= 0) {
-        controller.playingProcess = 0;
-      } else if (playingProcess >= 1) {
-        controller.playingProcess = 1;
-      } else {
-        controller.playingProcess = playingProcess;
-      }
-    }
-  }
-
   render() {
     return (
       <div
         className="mt-player"
-        onMouseUp={e => this.handleMouseUp(e)}
-        onMouseMove={e => this.handleMouseMove(e)}
         role="button"
         tabIndex={-1}
       >

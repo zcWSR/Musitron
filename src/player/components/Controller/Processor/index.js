@@ -19,27 +19,35 @@ export default class Processor extends React.Component {
     super(props);
     this.store = props.store;
     window.addEventListener('resize', () => {
-      this.store.barWidth = this.bar.offsetWidth;
+      this.store.processorBarWidth = this.bar.offsetWidth;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      const controller = this.store;
+      if (controller.isProcessorBtnPress) {
+        const playingProcess =
+          ((e.screenX - controller.processorBtnStartX) + controller.processorBtnXWas) / (controller.processorBarWidth - 14);
+        if (playingProcess <= 0) {
+          controller.playingProcess = 0;
+        } else if (playingProcess >= 1) {
+          controller.playingProcess = 1;
+        } else {
+          controller.playingProcess = playingProcess;
+        }
+      }
+    });
+
+    window.addEventListener('mouseup', () => {
+      const controller = this.store;
+      controller.isProcessorBtnPress = false;
+      controller.processorBtnXWas = controller.processorBtnToLeftPx;
     });
   }
   componentDidMount() {
-    this.store.barWidth = this.bar.offsetWidth;
-    const playingInterval = setInterval(() => {
-      this.store.playingProcess += 0.01;
-      if (this.store.playingProcess >= 1) {
-        clearInterval(playingInterval);
-      }
-    }, 100);
-
-    const loadingInterval = setInterval(() => {
-      this.store.loadingProcess += 0.02;
-      if (this.store.loadingProcess >= 1) {
-        clearInterval(loadingInterval);
-      }
-    }, 100);
+    this.store.processorBarWidth = this.bar.offsetWidth;
   }
   componentDidUpdate() {
-    this.store.barWidth = this.bar.offsetWidth;
+    this.store.processorBarWidth = this.bar.offsetWidth;
   }
 
   getBarRef(ref) {
@@ -47,9 +55,10 @@ export default class Processor extends React.Component {
   }
 
   handleBtnMouseDown(e) {
-    this.store.btnStartX = e.screenX;
-    this.store.isBtnPress = true;
-    this.store.btnXWas = this.store.playingProcess * (this.store.barWidth - 14);
+    const controller = this.store;
+    controller.processorBtnStartX = e.screenX;
+    controller.isProcessorBtnPress = true;
+    controller.processorBtnXWas = controller.processorBtnToLeftPx;
   }
 
   render() {
@@ -62,7 +71,7 @@ export default class Processor extends React.Component {
         <div className="processor-bar-container" ref={r => this.getBarRef(r)}>
           <div
             className="processor-btn"
-            style={{ left: this.store.btnToLeftPx }}
+            style={{ left: `${this.store.processorBtnToLeftPx}px` }}
             onMouseDown={e => this.handleBtnMouseDown(e)}
             role="button"
             tabIndex={0}

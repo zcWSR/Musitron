@@ -1,0 +1,57 @@
+$volume-btn-height: 12px;
+$volume-bar-height: 4px;
+$volume-icon-size: 18px;
+
+.mt-volume {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-left: 20px;
+  width: 123px;
+  height: $volume-btn-height;
+
+  .volume-icon {
+    font-size: $volume-icon-size;
+    margin-right: 5px;
+  }
+
+  .volume-bar-container {
+    flex: 1;
+    align-self: center;
+    display: inline-block;
+    position: relative;
+    height: inherit;
+    
+    .volume-btn {
+      position: absolute;
+      height: $volume-btn-height;
+      width: $volume-btn-height;
+      left: 0;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 2px #444;
+      transition:  left .1s linear;
+      z-index: 2;
+
+      &:active {
+        background: #e5e5e5;
+      }
+    }
+
+    .volume-bar {
+      position: relative;
+      margin: 0 $volume-btn-height / 2 - $volume-bar-height / 2;
+      height: inherit;
+      .bar {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        transform: translateY(-50%);
+        height: $volume-bar-height;
+        background: #9a9b9c;
+        border-radius: 5px;
+      }
+    }
+
+  }
+}
