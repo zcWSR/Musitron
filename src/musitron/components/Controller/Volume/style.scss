@@ -1,6 +1,6 @@
 $volume-btn-height: 12px;
 $volume-bar-height: 4px;
-$volume-icon-size: 18px;
+$volume-icon-size: 20px;
 
 .mt-volume {
   display: flex;
@@ -12,7 +12,12 @@ $volume-icon-size: 18px;
 
   .volume-icon {
     font-size: $volume-icon-size;
+    color: #3c3c3c;
     margin-right: 5px;
+    cursor: default;
+    &:active {
+      color: #121212;
+    }
   }
 
   .volume-bar-container {

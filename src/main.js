@@ -2,7 +2,9 @@ const electron = require('electron');
 const path = require('path');
 const url = require('url');
 
-const { app, BrowserWindow, ipcMain } = electron;
+const {
+  app, BrowserWindow, ipcMain
+} = electron;
 
 let mainWindow;
 let playerWindow;
@@ -11,9 +13,12 @@ function createMainWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    minWidth: 800,
+    minHeight: 600,
     show: false,
     frame: false,
-    transparent: true
+    transparent: true,
+    webPreferences: { webSecurity: false }
   });
 
   mainWindow.once('ready-to-show', () => {
@@ -54,14 +59,23 @@ function createMainWindow() {
   });
 }
 
-// function createPlayWindow() {
-//   playerWindow = new BrowserWindow({
-//     show: false
-//   });
-// }
+function createPlayerWindow() {
+  playerWindow = new BrowserWindow({
+    show: false
+  });
+
+  playerWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'player.html'),
+    protocol: 'file',
+    slashes: true
+  }));
+}
 
 
-app.on('ready', createMainWindow);
+app.on('ready', () => {
+  createMainWindow();
+  createPlayerWindow();
+});
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {

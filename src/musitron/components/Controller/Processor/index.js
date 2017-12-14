@@ -94,7 +94,7 @@ export default class Processor extends React.Component {
             tabIndex={0}
           >
             <div className="bar" />
-            <div className="bar process" style={{ width: `${this.store.playingProcess * 100}%`}} />
+            <div className="bar process" style={{ width: `${this.store.playingProcess * 100}%` }} />
             <div className="bar loading" style={{ width: `${this.store.loadingProcess * 100}%` }} />
           </div>
         </div>

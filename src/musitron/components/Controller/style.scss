@@ -1,6 +1,23 @@
+$icon-size: 20px;
+
 .mt-controller {
   display: flex;
   align-items: center;
   height: 65px;
   background: #f6f6f6;
+
+  .controller-icon {
+    font-size: $icon-size;
+    margin-left: 15px;
+    color: #3c3c3c;
+    cursor: default;
+
+    &.play-list {
+      font-size: $icon-size + 2;
+      margin-right: 20px;
+    }
+    &:active {
+      color: #121212;
+    }
+  }
 }

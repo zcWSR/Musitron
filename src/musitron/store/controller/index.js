@@ -1,4 +1,5 @@
 import { observable, computed, action } from 'mobx';
+import Utils from '../../utils';
 
 
 export default class ControllerStore {
@@ -41,5 +42,13 @@ export default class ControllerStore {
   @computed
   get volumeBtnToLeftPx() {
     return this.volume * (100 - 10);
+  }
+
+
+  @observable playOrder = Utils.PLAY_ORDER.LIST_LOOP;
+
+  @action.bound
+  togglePlayOrder() {
+    this.playOrder = (this.playOrder + 1) % 3;
   }
 }
