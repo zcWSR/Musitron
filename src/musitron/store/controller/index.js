@@ -51,4 +51,9 @@ export default class ControllerStore {
   togglePlayOrder() {
     this.playOrder = (this.playOrder + 1) % 3;
   }
+
+  @observable playList = {
+    list: [],
+    history: []
+  }
 }

@@ -1,0 +1,28 @@
+.mt-playlist {
+  display: flex;
+  align-items: center;
+  margin: 0 20px 0 15px;
+
+  .playlist-icon {
+    font-size: 22px;
+    color: #3c3c3c;
+  }
+  .playlist-length {
+    display: inline-block;
+    padding: 3px;
+    background: #c5c5c5;
+    font-size: 9px;
+    line-height: 8px;
+    color: white;
+    border-radius: 20px;
+  }
+
+  &:active {
+    .playlist-icon {
+      color: #121212;
+    }
+    .playlist-length {
+      background: #8f8f8f;
+    }
+  }
+}

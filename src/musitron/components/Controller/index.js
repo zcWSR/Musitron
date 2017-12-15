@@ -8,6 +8,7 @@ import Icon from '../Icon';
 import BtnGroup from './BtnGroup';
 import Processor from './Processor';
 import Volume from './Volume';
+import PlayList from './PlayList';
 
 import './style.scss';
 
@@ -31,7 +32,7 @@ import './style.scss';
     //   const { statusCode } = res;
     //   const contentLength = 0;
     //   if (statusCode === 200) {
-        
+
     //   }
     //   res.on('data', (thunk) => {
     //     console.log(`recieve chunk size ${thunk.length}`);
@@ -59,7 +60,7 @@ import './style.scss';
         <Processor store={this.store} />
         <Volume store={this.store} />
         <Icon iconName={playOrderIconName} className="controller-icon" onClick={() => this.store.togglePlayOrder()} />
-        <Icon iconName="queue music" className="controller-icon play-list" />
+        <PlayList playList={this.store.playList} />
       </div>
     );
   }

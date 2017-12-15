@@ -12,10 +12,6 @@ $icon-size: 20px;
     color: #3c3c3c;
     cursor: default;
 
-    &.play-list {
-      font-size: $icon-size + 2;
-      margin-right: 20px;
-    }
     &:active {
       color: #121212;
     }
